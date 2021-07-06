@@ -4,7 +4,7 @@ import * as S from "./style";
 const Home = () => {
   return (
     <S.ContainerHome>
-      {/* Logo aqui */}
+      <img src="/assets/svg/logo-vertical.svg" alt="Logo" />
       <S.Search>
         <S.InputSearch />
         <S.SubmitButton>

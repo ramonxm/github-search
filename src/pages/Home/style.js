@@ -36,7 +36,7 @@ const SubmitButton = styled.button`
   margin-top: 47px;
   background: #8752cc;
   padding: 12px;
-  color: #535353;
+  color: #fff;
   border: none;
   border-radius: 8px;
   width: 100%;
@@ -44,6 +44,10 @@ const SubmitButton = styled.button`
   font-size: 1.125rem;
   cursor: pointer;
   outline: none;
+
+  &:focus {
+    transform: scale(0.95);
+  }
 `;
 
 const Icon = styled.img`

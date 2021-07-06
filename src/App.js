@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./infrastructure/Routes";
+import GlobalStyle from "./styles/Global";
 
 const App = () => {
   return (
     <Router>
-      <Routes></Routes>
+      <Routes />
+      <GlobalStyle />
     </Router>
   );
 };
