@@ -7,10 +7,7 @@ const Home = () => {
       <img src="/assets/svg/logo-vertical.svg" alt="Logo" />
       <S.Search>
         <S.InputSearch />
-        <S.SubmitButton>
-          Search
-          <S.Icon />
-        </S.SubmitButton>
+        <S.SubmitButton>Search</S.SubmitButton>
       </S.Search>
     </S.ContainerHome>
   );

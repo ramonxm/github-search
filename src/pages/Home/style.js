@@ -3,46 +3,49 @@ import styled from "styled-components";
 const ContainerHome = styled.main`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
   background: #232324;
+
+  width: 100vw;
   height: 100vh;
 `;
 
 const Search = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 12px;
-  height: 250px;
 `;
 
 const InputSearch = styled.input`
-  background: none;
-  border: none;
-  color: #535353;
   text-align: center;
-  border-bottom: 4px solid #8752cc;
-  padding: 12px;
-  font-weight: 400;
   font-size: 1.125rem;
+  font-weight: 400;
+  color: #535353;
+
+  border: none;
+  border-bottom: 4px solid #8752cc;
+  background: none;
   outline: none;
-  margin-bottom: 24px;
-  margin-top: 20px;
+
+  padding: 5px;
+  margin: 20px 0;
 `;
 
 const SubmitButton = styled.button`
-  margin-top: 47px;
-  background: #8752cc;
-  padding: 12px;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
   width: 100%;
-  font-weight: 700;
+
   font-size: 1.125rem;
+  font-weight: 700;
+
+  color: #fff;
+  background: #8752cc;
+
+  padding: 12px;
+  border-radius: 12px;
+
   cursor: pointer;
+  border: none;
   outline: none;
 
   &:focus {
@@ -50,8 +53,4 @@ const SubmitButton = styled.button`
   }
 `;
 
-const Icon = styled.img`
-  font-size: 1.25rem;
-`;
-
-export { ContainerHome, Search, InputSearch, Icon, SubmitButton };
+export { ContainerHome, Search, InputSearch, SubmitButton };
