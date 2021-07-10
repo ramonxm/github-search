@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    background: #232324;
     scroll-behavior: smooth;
   }
 `;

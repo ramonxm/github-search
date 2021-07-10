@@ -6,8 +6,6 @@ const ContainerLogin = styled.main`
   justify-content: center;
   align-items: center;
 
-  background: #232324;
-
   width: 100vw;
   height: 100vh;
 `;
