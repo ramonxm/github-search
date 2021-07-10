@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ContainerHome = styled.main`
+const ContainerLogin = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +12,11 @@ const ContainerHome = styled.main`
   height: 100vh;
 `;
 
-const Search = styled.div`
+const LogoImg = styled.img`
+  max-width: 197px;
+`;
+
+const ContainerSearch = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -53,4 +57,4 @@ const SubmitButton = styled.button`
   }
 `;
 
-export { ContainerHome, Search, InputSearch, SubmitButton };
+export { ContainerLogin, ContainerSearch, InputSearch, SubmitButton, LogoImg };
