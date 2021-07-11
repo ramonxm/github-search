@@ -11,6 +11,36 @@ const Profile = () => {
   };
 
   document.title = "Profile";
+
+  const repository = [
+    {
+      title: "Create-React-App",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non est non ligula accumsan facilisis ut quis lacus",
+      stars: "300",
+      forks: "15",
+      tech: "javascript",
+      repo: "http://github.com/ramonxm",
+    },
+    {
+      title: "Create-React-App",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non est non ligula accumsan facilisis ut quis lacus",
+      stars: "300",
+      forks: "15",
+      tech: "javascript",
+      repo: "http://github.com/ramonxm",
+    },
+    {
+      title: "Create-React-App",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non est non ligula accumsan facilisis ut quis lacus",
+      stars: "300",
+      forks: "15",
+      tech: "nodejs",
+      repo: "http://github.com/ramonxm",
+    },
+  ];
   return (
     <>
       <S.ContainerHeader>
@@ -66,6 +96,39 @@ const Profile = () => {
           </S.ContentTotalRepositories>
         </S.ContainerTotalRepositories>
       </S.ContainerUserProfile>
+      <S.ContainerRepository>
+        {repository.map(({ ...props }) => {
+          return (
+            <S.ContainerRepositoriesInfos>
+              <S.TitleRepository>{props.title}</S.TitleRepository>
+              <S.ContentRepository>
+                <S.DescriptionRepository>
+                  {props.description}
+                </S.DescriptionRepository>
+                <S.ContainerInfos>
+                  <S.UserInfos>
+                    <S.ImgInfos src="/assets/svg/star.svg" alt="Star(s)" />
+                    {props.stars}
+                  </S.UserInfos>
+                  <S.UserInfos>
+                    <S.ImgInfos src="/assets/svg/fork.svg" alt="Fork" />
+                    {props.forks}
+                  </S.UserInfos>
+                  <S.UserInfos>
+                    <S.ImgInfos src="/assets/svg/tech.svg" alt="Tech" />
+                    {props.tech}
+                  </S.UserInfos>
+                  <S.UserInfos>
+                    <a href={props.repo}>
+                      <S.ImgInfos src="/assets/svg/search.svg" alt="Search" />
+                    </a>
+                  </S.UserInfos>
+                </S.ContainerInfos>
+              </S.ContentRepository>
+            </S.ContainerRepositoriesInfos>
+          );
+        })}
+      </S.ContainerRepository>
     </>
   );
 };

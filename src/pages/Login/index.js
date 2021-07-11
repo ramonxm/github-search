@@ -12,7 +12,7 @@ const Login = () => {
     <S.ContainerLogin>
       <S.LogoImg src="/assets/svg/logo-vertical.svg" alt="Logo" />
       <S.ContainerSearch>
-        <S.InputSearch />
+        <S.InputSearch placeholder="Enter user name" />
         <S.SubmitButton onClick={handleLoginUser}>Search</S.SubmitButton>
       </S.ContainerSearch>
     </S.ContainerLogin>
