@@ -5,15 +5,18 @@ import * as S from "./style";
 const Login = () => {
   const history = useHistory();
 
-  const handleLoginUser = () => {
+  const handleLogin = () => {
     history.push("/profile");
   };
+
   return (
     <S.ContainerLogin>
       <S.LogoImg src="/assets/svg/logo-vertical.svg" alt="Logo" />
       <S.ContainerSearch>
-        <S.InputSearch placeholder="Enter user name" />
-        <S.SubmitButton onClick={handleLoginUser}>Search</S.SubmitButton>
+        <S.InputSearch type="text" placeholder="Enter your user name" />
+        <S.SubmitButton type="submit" onClick={handleLogin}>
+          Search
+        </S.SubmitButton>
       </S.ContainerSearch>
     </S.ContainerLogin>
   );
