@@ -1,46 +1,21 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 
 import * as S from "./style";
 
 const Profile = () => {
   const history = useHistory();
+  const { data, repo } = useUser();
 
   const backToLogin = () => {
     history.goBack();
   };
 
+  console.log(data);
+
   document.title = "Profile";
 
-  const repository = [
-    {
-      title: "Create-React-App",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non est non ligula accumsan facilisis ut quis lacus",
-      stars: "300",
-      forks: "15",
-      tech: "javascript",
-      repo: "http://github.com/ramonxm",
-    },
-    {
-      title: "Create-React-App",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non est non ligula accumsan facilisis ut quis lacus",
-      stars: "300",
-      forks: "15",
-      tech: "javascript",
-      repo: "http://github.com/ramonxm",
-    },
-    {
-      title: "Create-React-App",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non est non ligula accumsan facilisis ut quis lacus",
-      stars: "300",
-      forks: "15",
-      tech: "nodejs",
-      repo: "http://github.com/ramonxm",
-    },
-  ];
   return (
     <>
       <S.ContainerHeader>
@@ -56,33 +31,26 @@ const Profile = () => {
       </S.ContainerHeader>
 
       <S.ContainerUserProfile>
-        <S.UserImg
-          alt="profile"
-          src="https://avatars.githubusercontent.com/u/38158476?v=4"
-        />
+        <S.UserImg alt="profile" src={data.avatar_url} />
         <S.ContentUserInfo>
-          <S.UserName>Ramon Xavier</S.UserName>
-          <S.UserAccount>@ramonxm</S.UserAccount>
+          <S.UserName>{data.name}</S.UserName>
+          <S.UserAccount>@{data.login}</S.UserAccount>
           <S.ContainerInfos>
             <S.UserInfos>
               <S.ImgInfos src="/assets/svg/location.svg" alt="Localização" />
-              Localização
+              {data.location}
             </S.UserInfos>
             <S.UserInfos>
               <S.ImgInfos src="/assets/svg/work.svg" alt="Trabalho" />
-              StormGroup
+              {data.company}
             </S.UserInfos>
             <S.UserInfos>
               <S.ImgInfos src="/assets/svg/peoples.svg" alt="Followers" />
-              4700
+              {data.followers}
             </S.UserInfos>
             <S.UserInfos>
               <S.ImgInfos src="/assets/svg/peoples-none.svg" alt="Following" />
-              3100
-            </S.UserInfos>
-            <S.UserInfos>
-              <S.ImgInfos src="/assets/svg/star.svg" alt="Star(s)" />
-              30
+              {data.following}
             </S.UserInfos>
           </S.ContainerInfos>
         </S.ContentUserInfo>
@@ -92,42 +60,52 @@ const Profile = () => {
           </S.TitleTotalRepositories>
           <S.ContentTotalRepositories>
             <S.IconRepositories src="/assets/svg/repo.svg" alt="Repositories" />
-            <S.TotalRepositories>29</S.TotalRepositories>
+            <S.TotalRepositories>{data.public_repos}</S.TotalRepositories>
           </S.ContentTotalRepositories>
         </S.ContainerTotalRepositories>
       </S.ContainerUserProfile>
       <S.ContainerRepository>
-        {repository.map(({ ...props }) => {
-          return (
-            <S.ContainerRepositoriesInfos>
-              <S.TitleRepository>{props.title}</S.TitleRepository>
-              <S.ContentRepository>
-                <S.DescriptionRepository>
-                  {props.description}
-                </S.DescriptionRepository>
-                <S.ContainerInfos>
-                  <S.UserInfos>
-                    <S.ImgInfos src="/assets/svg/star.svg" alt="Star(s)" />
-                    {props.stars}
-                  </S.UserInfos>
-                  <S.UserInfos>
-                    <S.ImgInfos src="/assets/svg/fork.svg" alt="Fork" />
-                    {props.forks}
-                  </S.UserInfos>
-                  <S.UserInfos>
-                    <S.ImgInfos src="/assets/svg/tech.svg" alt="Tech" />
-                    {props.tech}
-                  </S.UserInfos>
-                  <S.UserInfos>
-                    <a href={props.repo}>
-                      <S.ImgInfos src="/assets/svg/search.svg" alt="Search" />
-                    </a>
-                  </S.UserInfos>
-                </S.ContainerInfos>
-              </S.ContentRepository>
-            </S.ContainerRepositoriesInfos>
-          );
-        })}
+        {repo.map(
+          ({
+            name,
+            description,
+            language,
+            stargazers_count,
+            forks,
+            git_url,
+            id,
+          }) => {
+            return (
+              <S.ContainerRepositoriesInfos key={id}>
+                <S.TitleRepository>{name}</S.TitleRepository>
+                <S.ContentRepository>
+                  <S.DescriptionRepository>
+                    {description}
+                  </S.DescriptionRepository>
+                  <S.ContainerInfos>
+                    <S.UserInfos>
+                      <S.ImgInfos src="/assets/svg/star.svg" alt="Star(s)" />
+                      {stargazers_count}
+                    </S.UserInfos>
+                    <S.UserInfos>
+                      <S.ImgInfos src="/assets/svg/fork.svg" alt="Fork" />
+                      {forks}
+                    </S.UserInfos>
+                    <S.UserInfos>
+                      <S.ImgInfos src="/assets/svg/tech.svg" alt="Tech" />
+                      {language}
+                    </S.UserInfos>
+                    <S.UserInfos>
+                      <a href={git_url}>
+                        <S.ImgInfos src="/assets/svg/link.svg" alt="Search" />
+                      </a>
+                    </S.UserInfos>
+                  </S.ContainerInfos>
+                </S.ContentRepository>
+              </S.ContainerRepositoriesInfos>
+            );
+          }
+        )}
       </S.ContainerRepository>
     </>
   );
