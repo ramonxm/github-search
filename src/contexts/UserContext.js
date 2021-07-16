@@ -5,13 +5,20 @@ const UserContext = createContext({});
 const { Provider } = UserContext;
 
 const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(
-    undefined || JSON.parse(localStorage.getItem("user"))
+  const [data, setData] = useState(
+    [] && (JSON.parse(localStorage.getItem("users")) || [])
   );
+  const [repo, setRepo] = useState(
+    [] && (JSON.parse(localStorage.getItem("repo")) || [])
+  );
+
+  const [user, setUser] = useState("");
 
   return (
     <>
-      <Provider value={{ user, setUser }}>{children}</Provider>
+      <Provider value={{ data, setData, user, setUser, repo, setRepo }}>
+        {children}
+      </Provider>
     </>
   );
 };
