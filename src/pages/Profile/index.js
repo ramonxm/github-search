@@ -1,5 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Header } from "../../components/Header";
+import { Repositories } from "../../components/RepositoriesList";
+import { UserInfos } from "../../components/UserData";
 import { useUser } from "../../hooks/useUser";
 
 import * as S from "./style";
@@ -7,56 +10,33 @@ import * as S from "./style";
 const Profile = () => {
   const { data, repo } = useUser();
 
-  document.title = "Profile";
+  const {
+    avatar_url,
+    name,
+    login,
+    location,
+    company,
+    followers,
+    following,
+    public_repos,
+  } = data;
 
   return (
     <>
-      <S.ContainerHeader>
-        <Link to="/profile">
-          <S.NavigationImg
-            src="/assets/svg/logo-horizontal.svg"
-            alt="Github Search"
-          />
-        </Link>
-        <Link to="/">
-          <S.NavigationImg src="/assets/images/row.png" alt="Github Search" />
-        </Link>
-      </S.ContainerHeader>
+      <Header />
 
-      <S.ContainerUserProfile>
-        <S.UserImg alt="profile" src={data.avatar_url} />
-        <S.ContentUserInfo>
-          <S.UserName>{data.name}</S.UserName>
-          <S.UserAccount>@{data.login}</S.UserAccount>
-          <S.ContainerInfos>
-            <S.UserInfos>
-              <S.ImgInfos src="/assets/svg/location.svg" alt="Localização" />
-              {data.location}
-            </S.UserInfos>
-            <S.UserInfos>
-              <S.ImgInfos src="/assets/svg/work.svg" alt="Trabalho" />
-              {data.company}
-            </S.UserInfos>
-            <S.UserInfos>
-              <S.ImgInfos src="/assets/svg/peoples.svg" alt="Followers" />
-              {data.followers}
-            </S.UserInfos>
-            <S.UserInfos>
-              <S.ImgInfos src="/assets/svg/peoples-none.svg" alt="Following" />
-              {data.following}
-            </S.UserInfos>
-          </S.ContainerInfos>
-        </S.ContentUserInfo>
-        <S.ContainerTotalRepositories>
-          <S.TitleTotalRepositories>
-            Total Repositories
-          </S.TitleTotalRepositories>
-          <S.ContentTotalRepositories>
-            <S.IconRepositories src="/assets/svg/repo.svg" alt="Repositories" />
-            <S.TotalRepositories>{data.public_repos}</S.TotalRepositories>
-          </S.ContentTotalRepositories>
-        </S.ContainerTotalRepositories>
-      </S.ContainerUserProfile>
+      <Helmet title={`${name} | Profile`} />
+      <UserInfos
+        src={avatar_url}
+        name={name}
+        account={login}
+        location={location}
+        company={company}
+        followers={followers}
+        following={following}
+        repos={public_repos}
+      />
+
       <S.ContainerRepository>
         {repo.map(
           ({
@@ -69,33 +49,15 @@ const Profile = () => {
             id,
           }) => {
             return (
-              <S.ContainerRepositoriesInfos key={id}>
-                <S.TitleRepository>{name}</S.TitleRepository>
-                <S.ContentRepository>
-                  <S.DescriptionRepository>
-                    {description}
-                  </S.DescriptionRepository>
-                  <S.ContainerInfos>
-                    <S.UserInfos>
-                      <S.ImgInfos src="/assets/svg/star.svg" alt="Star(s)" />
-                      {stargazers_count}
-                    </S.UserInfos>
-                    <S.UserInfos>
-                      <S.ImgInfos src="/assets/svg/fork.svg" alt="Fork" />
-                      {forks}
-                    </S.UserInfos>
-                    <S.UserInfos>
-                      <S.ImgInfos src="/assets/svg/tech.svg" alt="Tech" />
-                      {language}
-                    </S.UserInfos>
-                    <S.UserInfos>
-                      <a href={git_url}>
-                        <S.ImgInfos src="/assets/svg/link.svg" alt="Search" />
-                      </a>
-                    </S.UserInfos>
-                  </S.ContainerInfos>
-                </S.ContentRepository>
-              </S.ContainerRepositoriesInfos>
+              <Repositories
+                key={id}
+                title={name}
+                description={description}
+                star={stargazers_count}
+                forks={forks}
+                language={language}
+                href={git_url}
+              />
             );
           }
         )}

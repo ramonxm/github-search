@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { Helmet } from "react-helmet";
 import toast, { Toaster } from "react-hot-toast";
 import { useHistory } from "react-router";
 import { Search } from "../../components/FormSearch";
@@ -44,11 +45,12 @@ const Login = () => {
 
   return (
     <S.ContainerLogin>
+      <Helmet title="Login | GithubSearch" />
       <S.LogoImg src="/assets/svg/logo-vertical.svg" alt="Logo" />
       <Search
         onSubmit={(e) => {
           e.preventDefault();
-          toast.success("Logando..");
+          toast.success("Logando...");
           handleSubmit();
         }}
         onChange={(e) => setUser(e.target.value)}
