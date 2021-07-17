@@ -14,7 +14,7 @@ const LogoImg = styled.img`
   max-width: 197px;
 `;
 
-const ContainerSearch = styled.div`
+const ContainerSearch = styled.form`
   display: flex;
   flex-direction: column;
 `;
@@ -34,25 +34,4 @@ const InputSearch = styled.input`
   margin: 20px 0;
 `;
 
-const SubmitButton = styled.button`
-  width: 100%;
-
-  font-size: 1.125rem;
-  font-weight: 700;
-
-  color: #fff;
-  background: #8752cc;
-
-  padding: 12px;
-  border-radius: 12px;
-
-  cursor: pointer;
-  border: none;
-  outline: none;
-
-  &:focus {
-    transform: scale(0.95);
-  }
-`;
-
-export { ContainerLogin, ContainerSearch, InputSearch, SubmitButton, LogoImg };
+export { ContainerLogin, ContainerSearch, InputSearch, LogoImg };
