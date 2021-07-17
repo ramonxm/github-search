@@ -9,7 +9,7 @@ const getUser = async (user) => {
     const response = await request;
     return response.data;
   } catch (error) {
-    throw new Error(error);
+    console.error();
   }
 };
 
@@ -19,7 +19,7 @@ const getRepo = async (user) => {
     const response = await request;
     return response.data;
   } catch (error) {
-    throw new Error(error);
+    console.error();
   }
 };
 
