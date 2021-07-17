@@ -2,13 +2,13 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: `https://api.github.com/users`,
-  timeout: 1000,
+  timeout: 10000,
+  headers: { "Content-Type": "application/json" },
 });
 
 const responseHandler = (response) => {
   if (response.status === 404) {
     alert("Deu ruim!");
-    return;
   }
   return response;
 };

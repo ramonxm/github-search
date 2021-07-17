@@ -6,7 +6,7 @@ const getUser = async (user) => {
     const response = await request;
     return response.data;
   } catch (error) {
-    console.error(error);
+    return api.errorHandler();
   }
 };
 
@@ -16,7 +16,7 @@ const getRepo = async (user) => {
     const response = await request;
     return response.data;
   } catch (error) {
-    console.error(error);
+    return api.errorHandler();
   }
 };
 
