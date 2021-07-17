@@ -3,6 +3,7 @@ import { useTransition, animated } from "react-spring";
 
 import { Login } from "../pages/Login";
 import { Profile } from "../pages/Profile";
+import { NotFound } from "../components/NotFound";
 
 const Routes = () => {
   const location = useLocation();
@@ -25,6 +26,7 @@ const Routes = () => {
       <Switch location={items}>
         <Route path="/" exact component={Login} />
         <Route path="/profile" component={Profile} />
+        <Route component={NotFound} />
       </Switch>
     </animated.div>
   ));
