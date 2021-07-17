@@ -1,18 +1,11 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useUser } from "../../hooks/useUser";
 
 import * as S from "./style";
 
 const Profile = () => {
-  const history = useHistory();
   const { data, repo } = useUser();
-
-  const backToLogin = () => {
-    history.goBack();
-  };
-
-  console.log(data);
 
   document.title = "Profile";
 
@@ -25,7 +18,7 @@ const Profile = () => {
             alt="Github Search"
           />
         </Link>
-        <Link onClick={backToLogin}>
+        <Link to="/">
           <S.NavigationImg src="/assets/images/row.png" alt="Github Search" />
         </Link>
       </S.ContainerHeader>
@@ -111,4 +104,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export { Profile };
