@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useHistory } from "react-router";
-import { Button } from "../../components/Button/style";
+import { Search } from "../../components/FormSearch";
 import { useUser } from "../../hooks/useUser";
 import { getRepo, getUser } from "../../infrastructure/services/user";
 import * as S from "./style";
@@ -45,21 +45,15 @@ const Login = () => {
   return (
     <S.ContainerLogin>
       <S.LogoImg src="/assets/svg/logo-vertical.svg" alt="Logo" />
-      <S.ContainerSearch
+      <Search
         onSubmit={(e) => {
           e.preventDefault();
           toast.success("Logando..");
           handleSubmit();
         }}
-      >
-        <S.InputSearch
-          type="text"
-          placeholder="Enter your user name"
-          onChange={(e) => setUser(e.target.value)}
-          value={user}
-        />
-        <Button type="submit">Search</Button>
-      </S.ContainerSearch>
+        onChange={(e) => setUser(e.target.value)}
+        value={user}
+      />
       <Toaster />
     </S.ContainerLogin>
   );
