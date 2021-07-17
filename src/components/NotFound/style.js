@@ -15,12 +15,14 @@ const TitleNotFound = styled.h1`
   font-size: 36px;
   color: #8752cc;
   font-weight: 700;
+  text-align: center;
 `;
 
 const DescriptionNotFound = styled.p`
   font-size: 18px;
   color: #fff;
   font-weight: 500;
+  text-align: center;
 `;
 
 export { ContainerNotFound, TitleNotFound, DescriptionNotFound };
