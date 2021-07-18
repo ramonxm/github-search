@@ -36,9 +36,9 @@ This project aims to list the information of a Github user.
 - [react-hot-toast](https://react-spring.io/)
 - [react-helmet](https://github.com/nfl/react-helmet)
 - [axios](https://github.com/axios/axios)
-- [VS Code][https://code.visualstudio.com/] with [EditorConfig][https://editorconfig.org/] and [ESLint][https://eslint.org/]
+- [VS Code](vscode) with [EditorConfig](vceditconfig) and [ESLint](vceslint)
 
-## 👇 How to use
+## 👋 How to use
 
 You need to use Nodejs.
 
