@@ -1,5 +1,7 @@
 import { createContext, useCallback, useState, useEffect } from "react";
 import { getUser, getRepo } from "../infrastructure/services/user";
+import { useHistory } from "react-router";
+import toast, { Toaster } from "react-hot-toast";
 
 const UserContext = createContext({});
 const { Provider } = UserContext;
@@ -13,38 +15,45 @@ const UserContextProvider = ({ children }) => {
   );
   const [user, setUser] = useState("");
 
-  const [values, setValues] = useState(false);
+  const [values, setValues] = useState(null);
 
   const hasUser = !!values;
-  const handleLoginUser = useCallback(async (user) => {
+  const { push } = useHistory();
+
+  const handleLoginUser = useCallback(async (user, handleGetRepo) => {
     try {
       const response = await getUser(user);
-      const { data } = response;
-      setData(data);
+      const { data } = await response;
       localStorage.setItem("users", JSON.stringify(data));
+      setData(data);
+      await handleGetRepo(user);
+      toast.success("Logando...");
       return data;
     } catch (error) {
       localStorage.removeItem("users");
+      setUser("");
+      toast.error("Usuário não encontrado!");
     }
   }, []);
 
   const handleGetRepo = useCallback(async (user) => {
     try {
       const response = await getRepo(user);
-      const { data } = response;
+      const { data } = await response;
       setRepo(data);
       localStorage.setItem("repo", JSON.stringify(data));
+      push("/profile");
       return data;
     } catch (error) {
       localStorage.removeItem("repo");
-      return;
+      setUser("");
+      console.log(error);
     }
   }, []);
 
   useEffect(() => {
     if (hasUser) {
-      handleLoginUser(user);
-      handleGetRepo(user);
+      handleLoginUser(user, handleGetRepo);
     }
 
     //eslint-disable-next-line
@@ -66,6 +75,7 @@ const UserContextProvider = ({ children }) => {
       >
         {children}
       </Provider>
+      <Toaster />
     </>
   );
 };
