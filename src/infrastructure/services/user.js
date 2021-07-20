@@ -1,23 +1,15 @@
 import { api } from "./base";
 
 const getUser = async (user) => {
-  try {
-    const request = await api.get(`/${user}`);
-    const response = await request;
-    return response.data;
-  } catch (error) {
-    return api.errorHandler();
-  }
+  const request = await api.get(`/${user}`);
+  const response = await request;
+  return response;
 };
 
 const getRepo = async (user) => {
-  try {
-    const request = await api.get(`/${user}/repos`);
-    const response = await request;
-    return response.data;
-  } catch (error) {
-    return api.errorHandler();
-  }
+  const request = await api.get(`/${user}/repos`);
+  const response = await request;
+  return response;
 };
 
 export { getUser, getRepo };
