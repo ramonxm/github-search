@@ -21,6 +21,7 @@ const Routes = () => {
       transform: "translate(-50%,0)",
     },
   });
+
   return transitions((props, items) => (
     <animated.div style={props}>
       <Switch location={items}>

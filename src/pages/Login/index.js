@@ -7,7 +7,7 @@ import { useUser } from "../../hooks/useUser";
 import * as S from "./style";
 
 const Login = () => {
-  const { user, setUser, setValues } = useUser();
+  const { user, setUser, values, setValues } = useUser();
   const { push } = useHistory();
 
   const secondsToLogin = 1000;
@@ -15,11 +15,14 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setValues(user);
-    if (user) {
+    console.log(values); // false
+    if (user && values !== false) {
       setTimeout(() => {
         push("/profile");
       }, secondsToLogin);
       toast.success("Logando...");
+    } else {
+      toast.error("Usuário não encontrado!");
     }
   };
 
