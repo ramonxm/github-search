@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    overflow-x: hidden;
     background: #232324;
     scroll-behavior: smooth;
   }

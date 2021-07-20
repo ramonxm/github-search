@@ -1,5 +1,6 @@
 import { Button } from "../Button/style";
 import * as S from "./style";
+
 const Search = ({ onSubmit, onChange, value }) => {
   return (
     <S.ContainerSearch onSubmit={onSubmit}>

@@ -7,6 +7,8 @@ const ContainerRepository = styled.div`
   gap: 16px;
   width: 100%;
   height: 100%;
+  margin: 0 auto;
+  max-width: 900px;
 `;
 
 export { ContainerRepository };

@@ -10,6 +10,7 @@ const UserContextProvider = ({ children }) => {
   const [data, setData] = useState(
     [] && (JSON.parse(localStorage.getItem("users")) || [])
   );
+
   const [repo, setRepo] = useState(
     [] && (JSON.parse(localStorage.getItem("repo")) || [])
   );
