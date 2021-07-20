@@ -10,35 +10,25 @@ import * as S from "./style";
 const Profile = () => {
   const { data, repo } = useUser();
 
-  const {
-    avatar_url,
-    name,
-    login,
-    location,
-    company,
-    followers,
-    following,
-    public_repos,
-  } = data;
-
   return (
     <>
       <Header />
 
-      <Helmet title={`${name} | Profile`} />
+      <Helmet title={`${data?.name} | Profile`} />
+
       <UserInfos
-        src={avatar_url}
-        name={name}
-        account={login}
-        location={location}
-        company={company}
-        followers={followers}
-        following={following}
-        repos={public_repos}
+        src={data?.avatar_url}
+        name={data?.name}
+        account={data?.login}
+        location={data?.location}
+        company={data?.company}
+        followers={data?.followers}
+        following={data?.following}
+        repos={data?.public_repos}
       />
 
       <S.ContainerRepository>
-        {repo.map(
+        {repo?.map(
           ({
             name,
             description,
