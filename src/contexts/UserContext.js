@@ -34,6 +34,9 @@ const UserContextProvider = ({ children }) => {
       localStorage.removeItem("users");
       setUser("");
       toast.error("Usuário não encontrado!");
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     }
   }, []);
 
@@ -49,7 +52,7 @@ const UserContextProvider = ({ children }) => {
       localStorage.removeItem("repo");
       setUser("");
       console.log(error);
-    }
+    } //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
