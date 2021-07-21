@@ -35,7 +35,7 @@ const Profile = () => {
             language,
             stargazers_count,
             forks,
-            git_url,
+            html_url,
             id,
           }) => {
             return (
@@ -46,7 +46,7 @@ const Profile = () => {
                 star={stargazers_count}
                 forks={forks}
                 language={language}
-                href={git_url}
+                href={html_url}
               />
             );
           }

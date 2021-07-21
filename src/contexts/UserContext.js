@@ -36,7 +36,7 @@ const UserContextProvider = ({ children }) => {
       toast.error("Usuário não encontrado!");
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 1000);
     }
   }, []);
 
